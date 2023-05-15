@@ -22,8 +22,72 @@ a {
     color: red;
     border-color: red;
 }
-.red:hover {
+.red:hover,
+.red.selected {
     background-color: rgba(255, 0, 0, 0.5);
+}
+.blue {
+    background-color: rgba(0, 0, 255, 0.1);
+    color: rgb(0, 120, 255);
+    border-color: blue;
+}
+.blue:hover,
+.blue.selected {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+.cyan {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: cyan;
+    border-color: cyan;
+}
+.cyan:hover,
+.cyan.selected {
+    background-color: rgba(0, 255, 255, 0.5);
+}
+.orange {
+    background-color: rgba(255, 165, 0, 0.2);
+    color: orange;
+    border-color: orange;
+}
+.orange:hover,
+.orange.selected {
+    background-color: rgba(255, 165, 0, 0.5);
+}
+.lime {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: lime;
+    border-color: lime;
+}
+.lime:hover,
+.lime.selected {
+    background-color: rgba(0, 255, 0, 0.5);
+}
+.white {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: white;
+}
+.white:hover,
+.white.selected {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.rebeccapurple {
+    background-color: rgba(102, 51, 153, 0.2);
+    color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+.rebeccapurple:hover,
+.rebeccapurple.selected {
+    background-color: rgba(102, 51, 153, 0.5);
+}
+.yellow {
+    background-color: rgba(255, 255, 0, 0.2);
+    color: yellow;
+    border-color: yellow;
+}
+.yellow:hover,
+.yellow.selected {
+    background-color: rgba(255, 255, 0, 0.5);
 }
 
 h1 {
@@ -32,12 +96,37 @@ h1 {
     font-size: 3rem;
 }
 
+button,
+.button {
+    width: 100%;
+    cursor: pointer;
+    background: var(--yellow);
+    color: var(--black);
+    border-radius: 0.25rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    transition: background 0.1s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+}
+button:hover,
+.button:hover {
+    background: var(--gold);
+}
+
 main {
     display: flex;
     gap: 4rem;
 }
 section {
     flex: 2;
+}
+aside {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .issue-content {
@@ -48,6 +137,7 @@ section {
 }
 
 .issue-content > span > span,
+.labels li button,
 .label {
     font-size: 0.75rem;
     font-weight: 600;
@@ -58,6 +148,13 @@ section {
     white-space: nowrap;
 }
 
+.labels ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
 
 .comment-count {
     display: flex;

@@ -4,6 +4,7 @@ import { Issue } from '../../interfaces';
 import { GoIssueOpened, GoIssueClosed, GoComment} from 'react-icons/go'
 import { relativeDate } from '../../helpers/relativeDate';
 import { useUserData } from '../../helpers/useUserData';
+import { Label } from './Label';
 
 export function IssueItem(issue: Issue) {
     const assigneeUser = useUserData(issue.assignee) 
@@ -26,7 +27,7 @@ export function IssueItem(issue: Issue) {
                     <Link to={`/issue/${issue.number}`}>{issue.title}</Link>
                     {
                         issue.labels.map(label => (
-                            <span key={label} className="label red">{label}</span>
+                            <Label key={label} label={label} />
                         ))
                     }
                 </span>
@@ -51,3 +52,4 @@ export function IssueItem(issue: Issue) {
         </li>
     );
 }
+

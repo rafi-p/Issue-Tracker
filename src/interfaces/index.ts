@@ -18,3 +18,9 @@ export interface User {
     name: string
     profilePictureUrl: string
 }
+
+export interface Label {
+    color: string
+    id: string
+    name: string
+}
