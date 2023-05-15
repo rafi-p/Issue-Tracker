@@ -2,8 +2,12 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Issue } from '../../interfaces';
 import { GoIssueOpened, GoIssueClosed, GoComment} from 'react-icons/go'
+import { relativeDate } from '../../helpers/relativeDate';
+import { useUserData } from '../../helpers/useUserData';
 
 export function IssueItem(issue: Issue) {
+    const assigneeUser = useUserData(issue.assignee) 
+    const createdByUser = useUserData(issue.createdBy)
     return (
         <li>
             <div>
@@ -27,12 +31,12 @@ export function IssueItem(issue: Issue) {
                     }
                 </span>
                 <small>
-                    #{issue.number} opened {issue.createdDate} by {issue.createdBy}
+                    #{issue.number} opened {relativeDate(issue.createdDate)} {createdByUser.isSuccess ? `by ${createdByUser.data.name}` : null}
                 </small>
             </div>
             {
                 issue.assignee 
-                ? <div>{issue.assignee}</div>
+                ? <img src={assigneeUser.isSuccess ? assigneeUser.data.profilePictureUrl : ""} className='assigned-to' alt={`Assigned to ${assigneeUser.isSuccess ? assigneeUser.data?.name : 'Avatar'}`}/>
                 : null
             }
             <span className="comment-count">

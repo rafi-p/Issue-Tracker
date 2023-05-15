@@ -12,3 +12,9 @@ export interface Issue {
     status: string;
     title: string;
 }
+
+export interface User {
+    id: string
+    name: string
+    profilePictureUrl: string
+}

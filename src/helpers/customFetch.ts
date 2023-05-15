@@ -1,3 +1,4 @@
+
 export async function customFetch<T>(url: string): Promise<T> {
     const res = await fetch(url);
     if (res.ok) {
@@ -10,3 +11,6 @@ export async function customFetch<T>(url: string): Promise<T> {
     }
     throw new Error(`Error ${res.status}: ${res.statusText}`);
 }
+
+
+

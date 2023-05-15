@@ -99,3 +99,7 @@ section {
     font-size: 0.75rem;
     color: #aaa;
 }
+.issues-list .assigned-to {
+    width: 1.5rem;
+    border-radius: 100%;
+}
