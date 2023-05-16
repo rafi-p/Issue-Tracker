@@ -4,12 +4,13 @@ import { IssueItem } from './IssueItem';
 import { Issue } from '../../interfaces'
 import { customFetch } from '../../helpers/customFetch';
 
-export function IssuesList({labels}: {labels: string[]}) {
+export function IssuesList({labels, status}: {labels: string[], status: string}) {
     const issuesQuery: UseQueryResult<Issue[], Error> = useQuery<Issue[], Error>(
-        ["issues", {labels}],
+        ["issues", {labels, status}],
         () => {
             const labelsString = labels.map((label) => `labels[]=${label}`).join("&")
-            return customFetch<Issue[]>(`/api/issues?${labelsString}`)
+            const statusString = status ? `&status=${status}` : ""
+            return customFetch<Issue[]>(`/api/issues?${labelsString}${statusString}`)
         }
     )
 
