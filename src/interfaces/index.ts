@@ -24,3 +24,10 @@ export interface Label {
     id: string
     name: string
 }
+export interface Comment {
+    id: string
+    comment: string
+    createdBy: string
+    createdDate: string
+}
+

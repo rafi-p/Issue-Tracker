@@ -213,3 +213,70 @@ aside {
     width: 1.5rem;
     border-radius: 100%;
 }
+
+
+.issue-details header {
+    border-bottom: solid 1px #aaa;
+    padding-bottom: 1rem;
+}
+.issue-details h2 span {
+    color: #aaa;
+}
+.issue-details header div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+.issue-details .created-by {
+    font-weight: bold;
+}
+.issue-details .open,
+.issue-details .closed {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: max-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+}
+.issue-details .open {
+    background: green;
+}
+.issue-details .closed {
+    background: red;
+}
+
+.comment {
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+}
+.comment > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+}
+.comment > div {
+    flex: 1;
+    border: solid 1px #aaa;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+.comment-header {
+    padding: 0.5rem;
+    border-bottom: solid 1px #aaa;
+    background-color: #111;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+.comment-header > span:first-child {
+    font-weight: bold;
+    color: white;
+}
+.comment-body {
+    padding: 0.75rem;
+}
