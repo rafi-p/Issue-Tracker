@@ -7,19 +7,20 @@ import { customFetch } from '../../helpers/customFetch';
 export function IssuesList({labels, status}: {labels: string[], status: string}) {
     const issuesQuery: UseQueryResult<Issue[], Error> = useQuery<Issue[], Error>(
         ["issues", {labels, status}],
-        () => {
+        ({signal}) => {
             const labelsString = labels.map((label) => `labels[]=${label}`).join("&")
             const statusString = status ? `&status=${status}` : ""
-            return customFetch<Issue[]>(`/api/issues?${labelsString}${statusString}`)
+            return customFetch<Issue[]>(`/api/issues?${labelsString}${statusString}`, {signal})
         }
     )
+
 
     const [searchValue, setSearchValue] = React.useState("")
 
     const searchQuery: UseQueryResult<SearchIssue, Error> = useQuery<SearchIssue, Error>(
         ["issues", "search", searchValue],
-        () => {
-            return customFetch<SearchIssue>(`/api/search/issues?q=${searchValue}`)
+        ({signal}) => {
+            return customFetch<SearchIssue>(`/api/search/issues?q=${searchValue}`, {signal})
         },
         {
             enabled: searchValue.length > 0

@@ -7,7 +7,10 @@ import { Label } from "../interfaces";
 export function useLabelsData() {
     const labelsQuery: UseQueryResult<Label[], Error> = useQuery<Label[], Error>(
         ["labels"],
-        () => customFetch<Label[]>(`/api/labels`)
+        ({signal}) => customFetch<Label[]>(`/api/labels`, {signal}),
+        {
+            staleTime: 1000 * 60 * 60
+        }
     );
 
     return labelsQuery

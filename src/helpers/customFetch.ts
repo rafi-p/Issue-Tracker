@@ -1,6 +1,6 @@
 
-export async function customFetch<T>(url: string): Promise<T> {
-    const res = await fetch(url);
+export async function customFetch<T>(url: string, options?: object): Promise<T> {
+    const res = await fetch(url, options);
     if (res.ok) {
         const result = await res.json();
 

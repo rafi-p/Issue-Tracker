@@ -9,14 +9,14 @@ import { Comment } from '../components/Issue/Comment';
 function useIssueData (issueNumber: string) {
     return useQuery<IssueInt, Error>(
         ["issues", issueNumber],
-        () => customFetch<IssueInt>(`/api/issues/${issueNumber}`)
+        ({signal}) => customFetch<IssueInt>(`/api/issues/${issueNumber}`, {signal})
     )
 }
 
 function useIssueComments(issueNumber: string) {
     return useQuery<CommentInt[], Error>(
         ["issue", issueNumber, "comments"],
-        () => customFetch<CommentInt[]>(`/api/issues/${issueNumber}/comments`)
+        ({signal}) => customFetch<CommentInt[]>(`/api/issues/${issueNumber}/comments`, {signal})
     )
 }
 
