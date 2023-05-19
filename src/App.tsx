@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Link, useMatch } from 'react-router-dom'
 import Loading from "./components/Loading";
+import FetchingIndicator from "./components/FetchingIndicator"
 
 const Issues = React.lazy(() => import('./pages/Issues'))
 const Issue = React.lazy(() => import('./pages/Issue'))
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Issues />} />
             <Route path="/issue/:number" element={<Issue />} />
           </Routes>
+          <FetchingIndicator />
         </React.Suspense>
     </div>
   );

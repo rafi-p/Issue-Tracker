@@ -3,6 +3,7 @@ import { UseQueryResult, useQuery } from 'react-query';
 import { IssueItem } from './IssueItem';
 import { Issue, SearchIssue } from '../../interfaces'
 import { customFetch } from '../../helpers/customFetch';
+import {default as LoadingSpinner} from '../Loading';
 
 export function IssuesList({labels, status}: {labels: string[], status: string}) {
     const issuesQuery: UseQueryResult<Issue[], Error> = useQuery<Issue[], Error>(
@@ -51,6 +52,7 @@ export function IssuesList({labels, status}: {labels: string[], status: string})
                     }}
                 />
             </form>
+            <h2>Issue List {issuesQuery.isFetching ? <LoadingSpinner /> : null}</h2>
             {
                 issuesQuery.isLoading || issuesQuery.isIdle
                 ? <p>Loading...</p>
