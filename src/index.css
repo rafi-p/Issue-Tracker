@@ -215,6 +215,23 @@ aside {
 }
 
 
+form label {
+    margin-bottom: 0.25rem;
+    display: block;
+    font-weight: bold;
+}
+form input {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: solid 1px rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 1rem;
+    transition: border 0.1s ease-in-out;
+    background-color: black;
+    color: white;
+}
+
+
 .issue-details header {
     border-bottom: solid 1px #aaa;
     padding-bottom: 1rem;

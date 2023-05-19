@@ -19,6 +19,11 @@ export interface User {
     profilePictureUrl: string
 }
 
+export interface SearchIssue {
+    count: number,
+    items: Issue[]
+}
+
 export interface Label {
     color: string
     id: string
