@@ -1,17 +1,24 @@
 import React, { ChangeEvent, ChangeEventHandler, FC, FormEvent, SyntheticEvent } from 'react';
-import { UseQueryResult, useQuery } from 'react-query';
+import { UseQueryResult, useQuery, useQueryClient } from 'react-query';
 import { IssueItem } from './IssueItem';
 import { Issue, SearchIssue } from '../../interfaces'
 import { customFetch } from '../../helpers/customFetch';
 import {default as LoadingSpinner} from '../Loading';
 
 export function IssuesList({labels, status}: {labels: string[], status: string}) {
+    const queryClient = useQueryClient()
     const issuesQuery: UseQueryResult<Issue[], Error> = useQuery<Issue[], Error>(
         ["issues", {labels, status}],
-        ({signal}) => {
+        async ({signal}) => {
             const labelsString = labels.map((label) => `labels[]=${label}`).join("&")
             const statusString = status ? `&status=${status}` : ""
-            return customFetch<Issue[]>(`/api/issues?${labelsString}${statusString}`, {signal})
+            const res = await customFetch<Issue[]>(`/api/issues?${labelsString}${statusString}`, {signal})
+
+            res.forEach(issue => {
+                queryClient.setQueryData(["issues", issue.number.toString()], issue)
+            })
+
+            return res
         }
     )
 

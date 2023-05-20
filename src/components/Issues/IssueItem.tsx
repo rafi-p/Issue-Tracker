@@ -5,12 +5,20 @@ import { GoIssueOpened, GoIssueClosed, GoComment} from 'react-icons/go'
 import { relativeDate } from '../../helpers/relativeDate';
 import { useUserData } from '../../helpers/useUserData';
 import { Label } from './Label';
+import { useQueryClient } from 'react-query';
+import { customFetch } from '../../helpers/customFetch';
 
 export function IssueItem(issue: Issue) {
+    const queryClient = useQueryClient()
     const assigneeUser = useUserData(issue.assignee) 
     const createdByUser = useUserData(issue.createdBy)
     return (
-        <li>
+        <li
+            onMouseEnter={() => {
+                queryClient.prefetchQuery(["issues", issue.number.toString()], ({signal}) => customFetch<Issue>(`/api/issues/${issue.number}`, {signal}))
+                queryClient.prefetchQuery(["issue", issue.number.toString(), "comments"], ({signal}) => customFetch<Comment[]>(`/api/issues/${issue.number}/comments`, {signal}))
+            }}
+        >
             <div>
                 {
                     issue.status === 'done' || issue.status === 'cancelled' 
