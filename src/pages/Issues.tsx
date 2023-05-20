@@ -2,6 +2,7 @@ import React from 'react'
 import { IssuesList } from '../components/Issues/IssuesList'
 import { LabelList } from "../components/Issues/LabelList"
 import { StatusSelect } from '../components/Issues/StatusSelect'
+import { Link } from 'react-router-dom'
 
 export default function Issues () {
     const [labels, setLabels] = React.useState<string[]>([])
@@ -32,6 +33,10 @@ export default function Issues () {
                         value={status}
                         onChange={(e) => {setStatus(e.target.value)}}
                     />
+                    <hr />
+                    <Link className="button" to="/add">
+                        Add Issue
+                    </Link>
                 </aside>
             </main>
         </div>
