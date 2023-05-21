@@ -5,6 +5,7 @@ import { customFetch } from '../helpers/customFetch';
 import { Issue as IssueInt, Comment as CommentInt} from '../interfaces'
 import { IssueHeader } from '../components/Issue/IssueHeader';
 import { Comment } from '../components/Issue/Comment';
+import IssueStatus from '../components/Issue/IssueStatus';
 
 function useIssueData (issueNumber: string) {
     return useQuery<IssueInt, Error>(
@@ -42,7 +43,12 @@ export default function Issue() {
                                 ))
                             }
                         </section>
-                        <aside></aside>
+                        <aside>
+                            <IssueStatus
+                                status={issueQuery.data?.status!}
+                                issueNumber={issueQuery.data?.number.toString()!}
+                            />
+                        </aside>
                     </main>
                 </>
             }

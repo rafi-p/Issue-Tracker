@@ -8,11 +8,11 @@ export const possibleStatus = [
     { id: "cancelled", label: "Cancelled" },
 ];
 
-export function StatusSelect({ value, onChange }: { value: string; onChange: (e: ChangeEvent<HTMLSelectElement>) => void; }) {
+export function StatusSelect({ value, onChange, noEmptyOption = false }: { value: string; onChange: (e: ChangeEvent<HTMLSelectElement>) => void, noEmptyOption: boolean }) {
     
     return (
         <select value={value} onChange={onChange} className='status-select'>
-            <option value="">Select status to filter</option>
+            {noEmptyOption ? null : <option value="">Select status to filter</option>}
             {possibleStatus.map((status) => (
                 <option key={status.id} value={status.id}>{status.label}</option>
             ))}
