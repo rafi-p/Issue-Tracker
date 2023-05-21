@@ -2,11 +2,12 @@ import React from 'react';
 import { UseQueryResult, useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { customFetch } from '../helpers/customFetch';
-import { Issue as IssueInt, Comment as CommentInt} from '../interfaces'
+import { Issue as IssueInt, Comment as CommentInt, Label} from '../interfaces'
 import { IssueHeader } from '../components/Issue/IssueHeader';
 import { Comment } from '../components/Issue/Comment';
 import IssueStatus from '../components/Issue/IssueStatus';
 import IssueAssignment from '../components/Issue/IssueAssignment';
+import IssueLabels from '../components/Issue/IssueLabels';
 
 function useIssueData (issueNumber: string) {
     return useQuery<IssueInt, Error>(
@@ -53,6 +54,10 @@ export default function Issue() {
                                 assignee={issueQuery.data?.assignee!}
                                 issueNumber={issueQuery.data?.number.toString()!}
                             />
+                            <IssueLabels
+                                labels={issueQuery.data?.labels!}
+                                issueNumber={issueQuery.data?.number.toString()!}
+                            />
                         </aside>
                     </main>
                 </>
@@ -60,5 +65,6 @@ export default function Issue() {
         </div>
     );
 }
+
 
 

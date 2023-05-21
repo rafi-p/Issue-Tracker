@@ -314,6 +314,11 @@ form input {
 .issue-details aside .status-select {
     font-size: 0.8rem;
 }
+.label-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+}
 
 .comment {
     margin: 1rem 0;
