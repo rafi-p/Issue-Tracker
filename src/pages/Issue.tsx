@@ -6,6 +6,7 @@ import { Issue as IssueInt, Comment as CommentInt} from '../interfaces'
 import { IssueHeader } from '../components/Issue/IssueHeader';
 import { Comment } from '../components/Issue/Comment';
 import IssueStatus from '../components/Issue/IssueStatus';
+import IssueAssignment from '../components/Issue/IssueAssignment';
 
 function useIssueData (issueNumber: string) {
     return useQuery<IssueInt, Error>(
@@ -46,6 +47,10 @@ export default function Issue() {
                         <aside>
                             <IssueStatus
                                 status={issueQuery.data?.status!}
+                                issueNumber={issueQuery.data?.number.toString()!}
+                            />
+                            <IssueAssignment 
+                                assignee={issueQuery.data?.assignee!}
                                 issueNumber={issueQuery.data?.number.toString()!}
                             />
                         </aside>

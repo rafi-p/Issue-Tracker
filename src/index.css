@@ -296,6 +296,24 @@ form input {
 .issue-details .closed {
     background: red;
 }
+.issue-details aside img {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 999px;
+}
+.issue-details aside > div {
+    position: relative;
+}
+.issue-details aside svg {
+    cursor: pointer;
+    transition: transform 0.25s ease-in-out;
+}
+.issue-details aside svg:hover {
+    transform: rotate(30deg);
+}
+.issue-details aside .status-select {
+    font-size: 0.8rem;
+}
 
 .comment {
     margin: 1rem 0;
@@ -366,6 +384,35 @@ hr {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.picker-menu {
+    z-index: 10;
+    position: absolute;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 12rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: solid 1px rgba(255, 255, 255, 0.2);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+.issue-options .picker-menu > div {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+.issue-options .picker-menu.labels > div {
+    align-items: baseline;
+}
+
+.issue-options .picker-menu > div.selected {
+    background-color: #444;
+}
+
+.issue-options .picker-menu > div:hover {
+    background-color: #333;
 }
 
 
