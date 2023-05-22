@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import { worker } from "@uidotdev/react-query-api";
 import { QueryClient, QueryClientProvider} from 'react-query'
 import {ReactQueryDevtools} from "react-query/devtools"
 
@@ -21,14 +21,10 @@ const client = new QueryClient({
 
 new Promise((res) => setTimeout(res, 100))
   .then(() =>{
-    
-      // if (process.env.NODE_ENV === "development") {
-        const { worker } =  require("@uidotdev/react-query-api");
-        worker.start({
-          quiet: true,
-          onUnhandledRequest: "bypass",
-        })
-      // }
+      worker.start({
+        quiet: true,
+        onUnhandledRequest: "bypass",
+      })
   })
   .then(() => {
     root.render(
