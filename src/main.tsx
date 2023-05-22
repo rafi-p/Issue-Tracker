@@ -22,13 +22,13 @@ const client = new QueryClient({
 new Promise((res) => setTimeout(res, 100))
   .then(() =>{
     
-      if (process.env.NODE_ENV === "development") {
+      // if (process.env.NODE_ENV === "development") {
         const { worker } =  require("@uidotdev/react-query-api");
         worker.start({
           quiet: true,
           onUnhandledRequest: "bypass",
         })
-      }
+      // }
   })
   .then(() => {
     root.render(
