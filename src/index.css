@@ -351,6 +351,14 @@ form input {
     padding: 0.75rem;
 }
 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.pagination button {
+    width: max-content;
+}
 
 .loader {
     animation: spin 1s steps(8) infinite;

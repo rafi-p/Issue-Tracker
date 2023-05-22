@@ -8,7 +8,7 @@ export const possibleStatus = [
     { id: "cancelled", label: "Cancelled" },
 ];
 
-export function StatusSelect({ value, onChange, noEmptyOption = false }: { value: string; onChange: (e: ChangeEvent<HTMLSelectElement>) => void, noEmptyOption: boolean }) {
+export function StatusSelect({ value, onChange, noEmptyOption = false }: { value: string; onChange: (e: ChangeEvent<HTMLSelectElement>) => void, noEmptyOption?: boolean }) {
     
     return (
         <select value={value} onChange={onChange} className='status-select'>
