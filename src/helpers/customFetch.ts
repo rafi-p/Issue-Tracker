@@ -8,7 +8,7 @@ export async function customFetch<T>(url: string, options?: object): Promise<T> 
         if (result.error) {
             throw new Error(result.error);
         }
-        return result;
+        return JSON.parse(result);
     }
     throw new Error(`Error ${res.status}: ${res.statusText}`);
 }
