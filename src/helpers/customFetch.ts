@@ -1,12 +1,7 @@
 
 export async function customFetch<T>(url: string, options?: object): Promise<T> {
-    const res = await fetch(url, {
-        ...options,
-        headers: {
-            ...options?.headers,
-            "Cache-Control": "no-cache"
-        }
-    });
+    const res = await fetch(url, options);
+    console.log(res) //to see from vercel
     if (res.ok) {
         const result = await res.json();
 
