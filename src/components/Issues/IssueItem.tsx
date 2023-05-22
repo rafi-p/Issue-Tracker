@@ -16,7 +16,7 @@ export function IssueItem(issue: Issue) {
         <li
             onMouseEnter={() => {
                 queryClient.prefetchQuery(["issues", issue.number.toString()], ({signal}) => customFetch<Issue>(`/api/issues/${issue.number}`, {signal}))
-                queryClient.prefetchQuery(["issue", issue.number.toString(), "comments"], ({signal}) => customFetch<Comment[]>(`/api/issues/${issue.number}/comments`, {signal}))
+                queryClient.prefetchInfiniteQuery(["issue", issue.number.toString(), "comments"], ({signal}) => customFetch<Comment[]>(`/api/issues/${issue.number}/comments?page=1`, {signal}))
             }}
         >
             <div>

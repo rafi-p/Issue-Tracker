@@ -2,10 +2,10 @@ import React from "react";
 import { Routes, Route, Link, useMatch } from 'react-router-dom'
 import Loading from "./components/Loading";
 import FetchingIndicator from "./components/FetchingIndicator"
-import AddIssue from "./pages/AddIssue";
 
 const Issues = React.lazy(() => import('./pages/Issues'))
 const Issue = React.lazy(() => import('./pages/Issue'))
+const AddIssue = React.lazy(() => import('./pages/AddIssue'))
 
 function App() {
   const isRootPath = useMatch({path: '/', end: true})
